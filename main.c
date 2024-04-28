@@ -11,6 +11,17 @@ struct descritor{
     struct no *i, *f;
 };
 
+//imprime lista
+void printList(struct descritor *d){
+    struct no *temp = d->i;
+    printf("\nElementos da lista: ");
+    while(temp != NULL){
+        printf("%d  ", temp->dado);
+        temp = temp->prox;
+    }
+    printf("\n");
+}
+
 void delete(struct descritor *d, int value){
     struct no *after = d->i;
     struct no *before = NULL;
@@ -75,10 +86,14 @@ int main(int arg, char *argv[]){
         scanf("%d", &sn);
     }while (sn == 1);
 
+    printList(d);
+
     printf("Digite o valor a ser excluido da lista: ");
     scanf("%d", &delete_value);
 
     delete(d, delete_value);
+
+    printList(d);
 
     return 0;
 }
